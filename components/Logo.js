@@ -11,9 +11,8 @@ export const Container = styled.div`
 `;
 
 const Image = styled.img`
-  width: 36px;
-  height: 36px;
-
+  width: 42px;
+  height: 42px;
   @media (max-width: 414px) {
     width: 32px;
     height: 32px;
@@ -23,7 +22,7 @@ const Image = styled.img`
 const Text = styled.p`
   font-size: 27px;
   font-weight: bold;
-  margin-left: 6px;
+  margin-left: 17px;
   color: white;
 
   @media (max-width: 414px) {
@@ -35,8 +34,8 @@ const Text = styled.p`
 export default function Logo() {
   return (
     <Container>
-      <Image alt='' src='/portier-logo.svg' />
-      <Text>Portier</Text>
+      <Image alt='' src='/Untitled-1-01.svg' />
+      <Text>Houssam Boudiar</Text>
     </Container>
   );
 }
