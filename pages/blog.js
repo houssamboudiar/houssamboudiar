@@ -19,7 +19,7 @@ export default function Blog({ allPostsData }) {
   return (
     <Layout>
       <Hero />
-      <Section py={[45, 80, 100]} px={[32, 60, 90]}>
+      {/* <Section py={[45, 80, 100]} px={[32, 60, 90]}>
         <Wrapper display={['grid']} gridGap={[16]} mb={[48]}>
           <Text size={['heading4', 'heading2', 'heading2']}>
             Latest articles
@@ -39,7 +39,7 @@ export default function Blog({ allPostsData }) {
             </Link>
           ))}
         </Container>
-      </Section>
+      </Section> */}
     </Layout>
   );
 }

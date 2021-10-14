@@ -13,12 +13,12 @@ export default function Home() {
   return (
     <Layout title='Home'>
       <Hero />
-      <Works />
+      {/* <Works />
       <Information />
       <Testimonials />
       <Facts />
       <InformationII />
-      <Cta />
+      <Cta /> */}
     </Layout>
   );
 }

@@ -18,50 +18,11 @@ const social = [
   },
 ];
 
-const links = [
-  {
-    title: 'About Me',
-  },
-  {
-    title: 'Pricing',
-  },
-  {
-    title: 'Handbook',
-  },
-  {
-    title: 'Contact',
-  },
-  {
-    title: 'Products',
-  },
-  {
-    title: 'Request demo',
-  },
-  {
-    title: 'Blog',
-  },
-];
-
 export default function Footer() {
   const date = new Date();
 
   return (
-    <Container py={[40, 50]} px={[20, 60]} bg={['steelGray']}>
-      <Frame display={['grid']} gridGap={34}>
-        <Logo />
-        <Wrapper
-          display={['grid']}
-          gridTemplateColumns={['1fr 1fr', '1fr 1fr 1fr 1fr']}
-          gridGap={[2]}
-          mb={48}
-        >
-          {links.map((item, index) => (
-            <Wrapper key={index}>
-              <Text size='caption'>{item.title}</Text>
-            </Wrapper>
-          ))}
-        </Wrapper>
-      </Frame>
+    <Container py={[40, 50]} px={[20, 60]} bg={['#12121C']}>
       <Wrapper
         display={['grid', 'flex']}
         gridGap={20}
@@ -71,15 +32,7 @@ export default function Footer() {
       >
         <Wrapper textAlign={['center', 'left']}>
           <Text size='caption2'>
-            Copyright © {date.getFullYear()} - All rights reserved - Made by{' '}
-            <a
-              href='https://vazurio.co'
-              target='_blank'
-              rel='noreferrer'
-              style={{ color: '#3b71fe', fontWeight: 'bold' }}
-            >
-              Vazurio
-            </a>
+            Copyright © {date.getFullYear()} - All rights reserved
           </Text>
         </Wrapper>
 

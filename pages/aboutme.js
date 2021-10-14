@@ -6,10 +6,10 @@ export default function AboutMe() {
   return (
     <Layout>
       <Hero />
-      <Companies />
+      {/* <Companies />
       <Values />
       <Facts />
-      <Cta />
+      <Cta /> */}
     </Layout>
   );
 }

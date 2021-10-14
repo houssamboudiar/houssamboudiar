@@ -43,12 +43,11 @@ export default function Hero() {
             gridGap={[16]}
           >
             <Text size={['heading3', 'heading1', 'hero']}>
-              Digital <span style={{ color: '#88888D' }}>Product</span> Designer
+              Junior <span style={{ color: '#88888D' }}>Software</span> Developer
               <span style={{ color: '#57EFB4' }}>.</span>
             </Text>
             <Text size={['body2', 'body', 'body']}>
-              I am Portier, experienced Digital Product Designer based on
-              Florida. I am here to help you build your amazing product.
+              I am Houssam, fresh Software Engineering graduate passionate about writing clean code, continuously improving my skills as a developer. I am here to help you build your amazing product.
             </Text>
           </Wrapper>
           <Button variant='primary'>Hire Me</Button>

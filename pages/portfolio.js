@@ -6,8 +6,8 @@ export default function Portfolio() {
   return (
     <Layout>
       <Hero />
-      <Works />
-      <Cta />
+      {/* <Works />
+      <Cta /> */}
     </Layout>
   );
 }
