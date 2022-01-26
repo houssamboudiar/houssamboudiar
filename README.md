@@ -39,26 +39,6 @@ i am also an open-source enthusiast and maintainer. i learned a lot from the ope
 <code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/firebase/firebase.png"></code>
 <code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/git/git.png"></code>
 
-📊 **this week i spent my time on:**
-<!--START_SECTION:waka-->
-```text
-JavaScript   42 hrs 26 mins  ████████████████████████▒   96.90 % 
-JSON         1 hr 4 mins     ▓░░░░░░░░░░░░░░░░░░░░░░░░   02.45 % 
-Other        10 mins         ░░░░░░░░░░░░░░░░░░░░░░░░░   00.40 % 
-XML          4 mins          ░░░░░░░░░░░░░░░░░░░░░░░░░   00.15 % 
-TypeScript   2 mins          ░░░░░░░░░░░░░░░░░░░░░░░░░   00.09 % 
-```
-<!--END_SECTION:waka-->
-
-🚧 **my todoist stats:**
-<!-- TODO-IST:START -->
-🏆  7,982 Karma Points           
-🌸  Completed 0 tasks today           
-✅  Completed 669 tasks so far           
-⏳  Longest streak is 10 days
-<!-- TODO-IST:END -->
-
-
 📈 my github stats
 
 <p align="center"> <img src="https://github-readme-stats.vercel.app/api?username=houssamboudiar&show_icons=true&theme=gotham" alt="houssamboudiar" />
