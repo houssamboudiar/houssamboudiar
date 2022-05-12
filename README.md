@@ -8,9 +8,6 @@
 <a href="https://www.linkedin.com/in/houssam-boudiar/">
   <img align="left" alt="Houssam's LinkedIN" width="22px" src="https://raw.githubusercontent.com/peterthehan/peterthehan/master/assets/linkedin.svg" />
 </a>
-<a href="https://open.spotify.com/user/31q6xrrc5jie4ohicbcnymac3yaa?si=64fd847603234e1b">
-  <img align="left" alt="Houssam's Spotify" width="22px" src="https://raw.githubusercontent.com/peterthehan/peterthehan/master/assets/spotify.svg" />
-</a>
 
 ![](https://visitor-badge.glitch.me/badge?page_id=houssamboudiar)
 
