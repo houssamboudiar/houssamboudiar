@@ -45,7 +45,7 @@ export default function Navbar(props) {
         <NavBox>
           <HeaderLinks />
         </NavBox>
-      ) : (
+        ) : (
         <NavBox open>
           <HeaderLinks />
         </NavBox>

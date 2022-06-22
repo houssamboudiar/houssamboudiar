@@ -11,14 +11,8 @@ import {
 
 export default function Home() {
   return (
-    <Layout title='Home'>
+    <Layout title='Houssam Boudiar | Portfolio'>
       <Hero />
-      {/* <Works />
-      <Information />
-      <Testimonials />
-      <Facts />
-      <InformationII />
-      <Cta /> */}
     </Layout>
   );
 }
