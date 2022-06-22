@@ -10,18 +10,27 @@ const Container = styled.div`
     fill: white;
   }
 
+  background-color: #222233;
+  #icon {
+    background-color: #57efb4;
+  }
+
+  svg {
+    fill: #222233;
+  }
+
+  #text {
+    color: white;
+  }
+  opacity:0.7;
   &:hover {
+    opacity:1;
     background-color: #222233;
     #icon {
       background-color: #57efb4;
     }
-
     svg {
       fill: #222233;
-    }
-
-    #text {
-      color: white;
     }
   }
 `;

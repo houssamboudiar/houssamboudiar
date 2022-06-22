@@ -6,7 +6,7 @@ export default function HeaderLinks() {
       <NavigationLink href='/portfolio'>Portfolio</NavigationLink>
       <NavigationLink href='/aboutme'>About Me</NavigationLink>
       <NavigationLink href='/blog'>Blog</NavigationLink>
-      <Button variant='secondary' href='https://docs.google.com/document/d/10ZKvAHIu6M1586r2PBJYJ1TlLCINPqgbJMQAvFgSpEw/edit?usp=sharing'  target="_blank">
+      <Button variant='secondary' href={'/Houssam Boudiar Resume.pdf'}  target="_blank" download>
         Curriculum Vitae
       </Button>
     </>
