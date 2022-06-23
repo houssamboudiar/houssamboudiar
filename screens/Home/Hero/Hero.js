@@ -42,8 +42,11 @@ export default function Hero() {
             justifyItems={['stretch', 'flex-start']}
             gridGap={[16]}
           >
-            <Text size={['heading3', 'heading1', 'hero']}>
-              Full Stack Developer<br/><span style={{ color: '#88888D', fontSize:'64px' }}>(Front End Heavy)</span> 
+            <Text size={['heading4', 'heading1', 'hero']}>
+              Full Stack Developer
+            </Text>
+            <Text size={['heading4', 'heading4', 'hero']}>
+              <span style={{ color: '#88888D'}}>(Front End Heavy)</span> 
               <span style={{ color: '#57EFB4' }}>.</span>
             </Text>
             <Text size={['body2', 'body', 'body']}>
