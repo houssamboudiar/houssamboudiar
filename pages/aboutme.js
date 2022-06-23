@@ -3,7 +3,7 @@ import Layout from '../components/Layout';
 import { Companies, Facts, Hero, Values } from '../screens/AboutMe';
 export default function AboutMe() {
   return (
-    <Layout>
+    <Layout title='Houssam Boudiar | About'>
       <Hero />
       <Companies />
       <Values />

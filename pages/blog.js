@@ -17,7 +17,7 @@ export async function getStaticProps() {
 
 export default function Blog({ allPostsData }) {
   return (
-    <Layout>
+    <Layout title='Houssam Boudiar | Blog'>
       <Hero />
       <Section py={[45, 45, 45]} px={[32, 60, 90]}>
         <Wrapper display={['grid']} gridGap={[16]} mb={[48]}>
