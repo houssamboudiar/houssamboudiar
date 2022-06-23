@@ -42,7 +42,7 @@ const items = [
 
 export default function Values() {
   return (
-    <Section py={[45, 80, 100]} px={[32, 60, 90]}>
+    <Section py={[45, 45, 20]} px={[32, 60, 90]}>
       <Container
         display={['flex']}
         flexDirection={['column']}

@@ -30,7 +30,7 @@ const items = [
 
 export default function Hero() {
   return (
-    <Section pt={[30, 30, 30]} px={[32, 60, 90]} pb={[32, 45, 0]}>
+    <Section pt={[30, 30, 52]} px={[32, 60, 90]} pb={[32, 45, 0]}>
       <Container>
         <Wrapper
           display={['grid']}
@@ -50,7 +50,7 @@ export default function Hero() {
               I am Houssam, fresh Software Engineering graduate passionate about writing clean code, continuously improving my skills as a developer. I am here to help you build your amazing product.
             </Text>
           </Wrapper>
-          <Button href='/Houssam Boudiar Resume.pdf' variant='primary' download>Hire Me</Button>
+          <Button href='/Houssam Boudiar Resume.pdf' variant='primary' download>Contact Me</Button>
         </Wrapper>
         <Container
           mt={[48]}
@@ -58,14 +58,6 @@ export default function Hero() {
           gridTemplateColumns={['1fr', '1fr 1fr', '1fr 1fr 1fr']}
           gridGap={[32]}
         >
-          {items.map((item, index) => (
-            <Item
-              key={index}
-              icon={item.icon}
-              title={item.title}
-              description={item.description}
-            />
-          ))}
         </Container>
       </Container>
     </Section>

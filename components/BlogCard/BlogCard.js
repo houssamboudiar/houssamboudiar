@@ -63,9 +63,7 @@ export default function BlogCard(props) {
             <Wrapper display={['grid']} gridGap={[16]}>
               <Text size='heading4'>{props.title}</Text>
               <Text size='caption'>
-                You must engrave deeply in your mind and never forget: your
-                emotional commitment to what you are doing will be translated
-                into your work.
+                {props.desc}
               </Text>
             </Wrapper>
 

@@ -91,8 +91,3 @@ export default function Hero() {
     </Section>
   );
 }
-
-{/* <Text size='caption'>Twitter</Text>
-<Text size='caption'>Facebook</Text>
-<Text size='caption'>Email</Text>
-<Text size='caption'>Instagram</Text> */}
