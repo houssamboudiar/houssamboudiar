@@ -30,4 +30,29 @@ code {
   padding: 10px 20px;
 
 }
+
+
+/* width */
+::-webkit-scrollbar {
+  overflow: overlay;
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #88888d59; 
+  border-radius: 15px;
+  opacity:0.1;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background:  #88888dad; 
+  opacity:1;
+}
 `;

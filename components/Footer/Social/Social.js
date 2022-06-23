@@ -25,11 +25,11 @@ export default function Social(props) {
       <svg
         width='15'
         height='15'
-        viewBox='0 0 15 15'
+        viewBox='0 0 50 50'
         fill='none'
         xmlns='http://www.w3.org/2000/svg'
       >
-        <path d={props.icon} fillRule='evenodd' clipRule='evenodd'></path>
+        <path d={props.icon} fillRule='nonzero' clipRule='nonzero'></path>
       </svg>
     </Container>
   );

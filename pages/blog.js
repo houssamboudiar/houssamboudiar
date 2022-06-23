@@ -19,27 +19,25 @@ export default function Blog({ allPostsData }) {
   return (
     <Layout>
       <Hero />
-      {/* <Section py={[45, 80, 100]} px={[32, 60, 90]}>
+      <Section py={[45, 45, 45]} px={[32, 60, 90]}>
         <Wrapper display={['grid']} gridGap={[16]} mb={[48]}>
           <Text size={['heading4', 'heading2', 'heading2']}>
             Latest articles
           </Text>
           <Text size='caption'>
             {' '}
-            Repeated failure will toughen your spirit and show you with absolute
-            clarity how things must be done.
           </Text>
         </Wrapper>
         <Container display={['grid']} gridGap={[32]}>
-          {allPostsData.map(({ id, date, title, image }) => (
+          {allPostsData.map(({ id, date, title, image, desc }) => (
             <Link key={id} href={`/posts/${id}`}>
               <a>
-                <BlogCard title={title} date={date} image={image} />
+                <BlogCard title={title} date={date} image={image} desc={desc} />
               </a>
             </Link>
           ))}
         </Container>
-      </Section> */}
+      </Section>
     </Layout>
   );
 }

@@ -5,9 +5,8 @@ import { Hero, Works } from '../screens/Portfolio';
 export default function Portfolio() {
   return (
     <Layout>
-      <Hero />
-      {/* <Works />
-      <Cta /> */}
+      <Works />
+      <Cta />
     </Layout>
   );
 }

@@ -9,6 +9,11 @@ export default function Cta() {
         justifyContent={['space-between']}
         width={[1]}
       >
+        <Wrapper maxWidth={[500]} mt={[48, 48, 0]}>
+          <Text size={['heading4', 'heading2', 'heading2']}>
+            How about we make something awesome together?
+          </Text>
+        </Wrapper>
         <Wrapper
           display={['grid']}
           justifyItems={['flex-start']}
@@ -16,15 +21,8 @@ export default function Cta() {
           maxWidth={[500]}
         >
           <Text size='caption'>
-            If we keep practicing, we gain fluency; basic skills are mastered,
-            allowing us to take on newer and more exciting challenges.
           </Text>
-          <Button variant='primary'>Get In Touch</Button>
-        </Wrapper>
-        <Wrapper maxWidth={[500]} mt={[48, 48, 0]}>
-          <Text size={['heading4', 'heading2', 'heading2']}>
-            How about we make something awesome together?
-          </Text>
+          <Button href='/Houssam Boudiar Resume.pdf' variant='primary' download>Get In Touch</Button>
         </Wrapper>
       </Container>
     </Section>

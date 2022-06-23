@@ -1,18 +1,8 @@
 {
   "items": [
     {
-      "image": "/images/01.webp",
-      "title": "Houssam - The ultimate templates & components library.",
-      "icon": ""
-    },
-    {
-      "image": "/images/02.webp",
-      "title": "The Corporate - Card for Indian Startups",
-      "icon": ""
-    },
-    {
-      "image": "/images/03.webp",
-      "title": "Components Web App Interface",
+      "image": "/images/react-store.jpg",
+      "title": "React Shop",
       "icon": ""
     }
   ]
