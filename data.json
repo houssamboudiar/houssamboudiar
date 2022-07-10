@@ -1,9 +1,32 @@
 {
   "items": [
     {
+      "image": "/images/portfolio.jpg",
+      "title": "Portfolio",
+      "icon": "",
+      "tech": "React, Next, Styled Components",
+      "url": "https://houssamboudiar.vercel.app/"
+    },
+    {
       "image": "/images/react-store.jpg",
       "title": "React Shop",
-      "icon": ""
+      "icon": "",
+      "tech": "React, Redux, Styled Components, Graphql",
+      "url": "https://github.com/houssamboudiar/react-clothing"    
+    },
+    {
+      "image": "/images/imageg.jpg",
+      "title": "Image Gallery",
+      "icon": "",
+      "tech": "HTML, CSS",
+      "url": "https://github.com/houssamboudiar/Image-gallery"    
+    },
+    {
+      "image": "/images/cryptoeditor.jpg",
+      "title": "Crypto Editor",
+      "icon": "",
+      "tech": "HTML, Vanilla JS, Regex, REST API",
+      "url": "https://github.com/houssamboudiar/crypto-editor-js"    
     }
   ]
 }

@@ -7,7 +7,7 @@ export default function Works() {
     <Section py={[45, 80, 100]} px={[32, 80, 90]}>
       <Container display={['grid']} gridGap={[32]}>
         {data.items.map((item, index) => (
-          <WorkCard key={index} image={item.image} title={item.title} />
+          <WorkCard key={index} image={item.image} title={item.title} url={item.url} tech={item.tech} />
         ))}
       </Container>
     </Section>

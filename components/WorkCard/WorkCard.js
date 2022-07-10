@@ -23,7 +23,7 @@ const Container = styled.div`
 
 export default function WorkCard(props) {
   return (
-    <a>
+    <a target="_blank" rel="noopener noreferrer" href={props.url}>
       <Container>
         <Frame
           position={['relative']}
@@ -47,6 +47,19 @@ export default function WorkCard(props) {
           position={['absolute']}
           p={[10, 20]}
           bottom={[0]}
+          display={['flex']}
+          alignItems={['center']}
+          justifyContent={['space-between']}
+          width={['100%']}
+        >
+          <Wrapper px={[16]} py={[16]} bg={['white']} borderRadius={[8]}>
+            <Text size='captionBold'>{props.tech}</Text>
+          </Wrapper>
+        </Wrapper>
+        <Wrapper
+          position={['absolute']}
+          p={[10, 20]}
+          bottom={[460]}
           display={['flex']}
           alignItems={['center']}
           justifyContent={['space-between']}
