@@ -59,7 +59,7 @@ export default function WorkCard(props) {
         <Wrapper
           position={['absolute']}
           p={[10, 20]}
-          bottom={[460]}
+          bottom={[800, 460]}
           display={['flex']}
           alignItems={['center']}
           justifyContent={['space-between']}
