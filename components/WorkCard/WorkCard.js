@@ -10,9 +10,33 @@ const Container = styled.div`
     fill: white;
   }
 
+  .circle
+  {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 1px solid #29c83f;
+    background-color: #009b15;
+    opacity: 0.5;
+    margin-right: 7px;
+  }
+
+  #live {
+    color: #fff;
+  }
+
   &:hover {
     #icon {
       background-color: #29c83f;
+    }
+
+    .circle
+    {
+      background-color: #fff;
+    }
+
+    #live {
+      color: #fff;
     }
 
     svg {
@@ -23,7 +47,7 @@ const Container = styled.div`
 
 export default function WorkCard(props) {
   return (
-    <a target="_blank" rel="noopener noreferrer" href={props.url}>
+    <a target="_blank" rel="noopener noreferrer" href={props.liveurl}>
       <Container>
         <Frame
           position={['relative']}
@@ -54,6 +78,18 @@ export default function WorkCard(props) {
         >
           <Wrapper px={[16]} py={[16]} bg={['white']} borderRadius={[8]}>
             <Text size='captionBold'>{props.tech}</Text>
+          </Wrapper>
+          <Wrapper pl={[10, 0, 0]}>
+            <Frame
+              id='icon'
+              bg={['steelGray']}
+              p={[20]}
+              borderRadius={[8]}
+              display={['flex']}
+            >
+              <div class="circle"></div>
+              <Text id='live' size='captionBold'>Live</Text>
+            </Frame>
           </Wrapper>
         </Wrapper>
         <Wrapper
