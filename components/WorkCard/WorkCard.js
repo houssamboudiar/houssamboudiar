@@ -87,7 +87,7 @@ export default function WorkCard(props) {
               borderRadius={[8]}
               display={['flex']}
             >
-              <div class="circle"></div>
+              <div className="circle"></div>
               <Text id='live' size='captionBold'>Live</Text>
             </Frame>
           </Wrapper>
