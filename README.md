@@ -1,12 +1,12 @@
 ### hey there!
 <a href="https://discord.gg/XTW52Kt">
-  <img align="left" alt="Houssam's Discord" width="22px" src="https://raw.githubusercontent.com/peterthehan/peterthehan/master/assets/discord.svg" />
+  Discord
 </a>
 <a href="https://twitter.com/houssamboudiar">
-  <img align="left" alt="Houssam Boudiar | Twitter" width="22px" src="https://raw.githubusercontent.com/peterthehan/peterthehan/master/assets/twitter.svg" />
+  Twitter
 </a>
 <a href="https://www.linkedin.com/in/houssam-boudiar/">
-  <img align="left" alt="Houssam's LinkedIN" width="22px" src="https://raw.githubusercontent.com/peterthehan/peterthehan/master/assets/linkedin.svg" />
+  LinkedIn 
 </a>
 
 ![](https://visitor-badge.glitch.me/badge?page_id=houssamboudiar)
