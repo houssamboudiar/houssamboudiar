@@ -68,28 +68,6 @@ export default function Hero() {
             ))}
           </Wrapper>
         </Wrapper>
-        <Frame
-          position={['relative', 'absolute', 'absolute']}
-          bottom={[48]}
-          overflow='hidden'
-          height={[320, 440, 440]}
-          width={[350, 420, 760]}
-          maxWidth={[450]}
-          borderRadius={[8]}
-          zIndex={[9]}
-          opacity={[0.3]}
-          
-        >
-          <Image
-            alt=''
-            src='/images/06-Recovered.jpg'
-            layout='fill'
-            placeholder='blur'
-            objectFit='cover'
-            blurDataURL='/images/06-blur.jpg'
-            onLoadingComplete=''
-          />
-        </Frame>
       </Container>
     </Section>
   );
