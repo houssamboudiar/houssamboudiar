@@ -1,0 +1,72 @@
+---
+title: Support-Ops AI Agent
+summary: A support agent that reads a customer's account, proposes an action such as a trial extension or a credit, and waits for a person to approve it before anything is written.
+order: 4
+kind: personal
+sector: Customer support
+role: Sole developer
+context: Personal project
+status: Working demo
+stack: [Python, FastAPI, LangGraph, Gemini, SQLite, React, SSE]
+---
+{/* TODO: add `repo:` to the frontmatter once github.com/houssamboudiar/support-ops-agent is public. */}
+{/* TODO: add `demo:` and a GIF/video of the approval flow; drop the file in public/ and embed it under "What I built". */}
+
+import Figure from '../../components/Figure.astro';
+import Diagram from '../../components/Diagram.astro';
+import { supportOps } from '../../diagrams/support-ops';
+
+## Problem
+
+An agent that can change customer accounts should not act alone. A rule written in the prompt,
+such as "never credit more than $200", can be talked around. Silent fallbacks are a quieter risk:
+when a model call fails and a simpler classifier takes over, the result can look exactly like a
+successful run.
+
+## What I built
+
+### An approval gate the graph can't skip
+
+The agent classifies a ticket. It then either drafts a read-only answer, plans an action or
+escalates the ticket. Planned actions go to an approval node. The first thing that node does is
+call LangGraph's `interrupt()`, so no path reaches a write without a person resuming the graph.
+When the graph resumes, the node runs again and receives the decision, so each write happens
+exactly once.
+
+### Limits in code, not in the prompt
+
+Trial extensions are capped at 14 days and credits at $200. A request over the limit is refused
+and escalated by a routing function in code, so it is never offered for approval. The model is
+told to report the number the customer asked for rather than round it down. If it rounded 30 days
+down to 14, the refusal path could never be reached.
+
+### Failures are labelled
+
+If the Gemini call fails, a keyword classifier takes over. Every result records which path
+produced it, either the model or a fallback with the exact error, and this shows in the trace. A
+verification script checks two things for each demo ticket: that the classification came from the
+model, and that the ticket took the right route.
+
+### Live reasoning trace
+
+Each step streams to a React UI over server-sent events. The reviewer approves or rejects the
+action from the same screen.
+
+<Figure caption="The agent graph. Accent outlines mark the LLM step and the human approval gate. Limits are checked in code before approval is requested.">
+  <Diagram spec={supportOps} />
+</Figure>
+
+## Outcome
+
+- No database write can happen without a person approving it.
+- Over-limit requests are refused and escalated before anyone is asked to approve them.
+- A failed model call is always labelled as a fallback, so it can't pass as a working one.
+- On the last verification run, all six demo tickets were classified by the live model and routed
+  correctly.
+
+### What I would change for production
+
+The demo keeps paused approvals in memory, so restarting the server drops them. Moving them to a
+persistent checkpointer is a one-line change. The resume endpoint is a `GET` so the page can use
+`EventSource`, but it should be a `POST`. A production queue should also fail a ticket instead of
+quietly falling back to keywords.

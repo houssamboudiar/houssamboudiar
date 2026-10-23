@@ -1,0 +1,48 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../site';
+---
+
+<Base
+  title="Contact"
+  description="Email Houssam Boudiar about full-stack or AI engineering roles. Based in Algiers (UTC+1), open to relocating to Europe."
+>
+  <div class="wrap section">
+    <div class="prose">
+      <span class="hud">Contact</span>
+      <h1>Get in touch</h1>
+      <p>
+        Email is the best way to reach me, whether it's about a role, a project or a question about
+        one of these case studies. I'm in Algiers, on UTC+1 all year, the same as Central
+        European winter time.
+      </p>
+    </div>
+
+    <div class="panel channel">
+      <span class="hud">Email</span>
+      <a class="channel__email" href={`mailto:${site.email}`}>{site.email}</a>
+    </div>
+
+    <ul class="links">
+      <li><a class="btn" href={site.linkedin} rel="me">LinkedIn</a></li>
+      <li><a class="btn" href={site.github} rel="me">GitHub</a></li>
+      <li><a class="btn" href={site.cv}>CV <span class="sr-only">(PDF)</span><span aria-hidden="true">↓</span></a></li>
+    </ul>
+  </div>
+</Base>
+
+<style>
+  .channel {
+    margin: 2rem 0;
+    max-width: 44rem;
+  }
+  .channel .hud {
+    margin-bottom: 0.5rem;
+  }
+  .channel__email {
+    font-family: var(--font-mono);
+    font-size: clamp(1rem, 4.2vw, 1.6rem);
+    font-weight: 700;
+    overflow-wrap: anywhere;
+  }
+</style>

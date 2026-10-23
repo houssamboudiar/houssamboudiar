@@ -1,0 +1,65 @@
+---
+title: Mobility One
+summary: Ticketing and operator management for metro, tram, bus and cable-car networks. It has an Angular frontend, a TypeScript monorepo with shared rules, Keycloak, and a Tauri desktop app tied to each PC's TPM chip.
+order: 2
+kind: commercial
+sector: Public transport
+role: Full-stack developer. Frontend, monorepo, desktop app and tests.
+context: Smartest, Algiers
+status: Near completion
+stack: [Angular, TypeScript, NestJS, OpenAPI, Keycloak, PostgreSQL, Tauri, Playwright]
+---
+{/* TODO: update `status:` with the launch date once it ships. */}
+
+import Figure from '../../components/Figure.astro';
+import Diagram from '../../components/Diagram.astro';
+import { mobilityOne } from '../../diagrams/mobility-one';
+
+## Problem
+
+Mobility One is a ticketing platform for public-transport operators. Four constraints shaped the work:
+
+- The backend team's Spring Boot API was not ready, and the frontend could not wait for it.
+- Ticket offices must only sell tickets from approved computers.
+- Each operator, whether metro, tram, bus or cable car, manages its own users and roles. A mistake
+  there could lock an operator out of its own system.
+- The product runs on-premise and offline. Bugs and licensing problems are expensive to fix once it
+  has shipped.
+
+## What I built
+
+### A monorepo built around the API contract
+
+I set up a TypeScript monorepo with shared validation rules and a typed client generated from the
+OpenAPI spec. I added a stand-in NestJS backend that follows the same conventions as the real one.
+This let the Angular frontend move ahead on its own. Moving to the real backend only means changing
+a URL.
+
+### Desktop app with device-bound sessions
+
+I built a Windows desktop app with Tauri for ticket offices. Each session is tied to a key stored in
+the PC's TPM chip, so a login cannot be reused from another machine.
+
+### Operator and user management
+
+I built the operator and user management with Keycloak sign-in and per-operator roles stored in
+PostgreSQL. It enforces rules such as "an operator can never lose its last admin". Every change is
+written to an audit log.
+
+### Tests and CI gates
+
+I wrote more than 170 automated tests. These include 50 Playwright end-to-end tests that also check
+accessibility and the Arabic right-to-left layout. I also added CI gates that block risky
+dependencies before they reach a release.
+
+<Figure caption="Simplified architecture. The dashed path is the planned switch from the stand-in backend to the real API.">
+  <Diagram spec={mobilityOne} />
+</Figure>
+
+## Outcome
+
+- Frontend work went ahead without waiting for the backend, and moving to the real API is a
+  configuration change.
+- A ticket-office login cannot be reused from any other computer.
+- Every change to operators, users and roles is recorded in the audit log.
+- More than 170 automated tests and dependency gates in CI catch problems before release.

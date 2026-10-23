@@ -1,0 +1,84 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  entry: CollectionEntry<'work'>;
+  index: number;
+  headingLevel?: 'h2' | 'h3';
+}
+const { entry, index, headingLevel: Heading = 'h2' } = Astro.props;
+const { title, summary, kind, sector, stack } = entry.data;
+const num = String(index + 1).padStart(2, '0');
+---
+
+<article class="card panel">
+  <p class="card__meta mono">
+    <span class="card__num">{num}</span>
+    <span>{kind === 'commercial' ? 'Commercial' : 'Personal'} · {sector}</span>
+  </p>
+  <Heading class="card__title">
+    <a href={`/work/${entry.id}/`}>{title}</a>
+  </Heading>
+  <p class="card__summary">{summary}</p>
+  <p class="card__stack mono">{stack.slice(0, 5).join(' · ')}</p>
+</article>
+
+<style>
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-left: 2px solid var(--line);
+    transition: border-color 0.15s;
+  }
+  .card:hover,
+  .card:focus-within {
+    border-left-color: var(--accent);
+  }
+  .card__meta {
+    display: flex;
+    gap: 0.75rem;
+    margin: 0 0 0.75rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .card__num {
+    color: var(--accent);
+  }
+  .card__title {
+    font-size: 1.3rem;
+    margin: 0 0 0.6rem;
+  }
+  .card__title a {
+    color: var(--text);
+    text-decoration: none;
+  }
+  /* Whole card is clickable; the heading link stays the only tab stop. */
+  .card__title a::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+  .card__title a:focus-visible {
+    outline: none;
+  }
+  /* Inset ring: an outline would be cut off by the panel's clip-path. */
+  .card:has(.card__title a:focus-visible) {
+    box-shadow: inset 0 0 0 3px var(--accent);
+  }
+  .card:hover .card__title a {
+    color: var(--accent);
+  }
+  .card__summary {
+    color: var(--muted);
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  .card__stack {
+    margin: auto 0 0;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+</style>

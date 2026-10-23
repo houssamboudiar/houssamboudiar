@@ -1,0 +1,54 @@
+---
+interface Props {
+  rows: [label: string, value: string][];
+}
+const { rows } = Astro.props;
+---
+
+<dl class="spec panel">
+  {
+    rows.map(([label, value]) => (
+      <div class="spec__row">
+        <dt>{label}</dt>
+        <dd>{value}</dd>
+      </div>
+    ))
+  }
+  <slot />
+</dl>
+
+<style>
+  .spec {
+    display: grid;
+    gap: 0;
+    margin: 0;
+    font-size: 0.95rem;
+  }
+  .spec :global(.spec__row) {
+    display: grid;
+    grid-template-columns: 5.5rem 1fr;
+    gap: 1rem;
+    padding-block: 0.55rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .spec :global(.spec__row:last-child) {
+    border-bottom: 0;
+  }
+  .spec :global(dt) {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-top: 0.2em;
+  }
+  .spec :global(dd) {
+    margin: 0;
+  }
+  @media (max-width: 30rem) {
+    .spec :global(.spec__row) {
+      grid-template-columns: 1fr;
+      gap: 0.1rem;
+    }
+  }
+</style>

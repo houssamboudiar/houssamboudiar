@@ -1,37 +1,27 @@
-### hey there!
-<a href="https://discord.gg/XTW52Kt">
-  Discord
-</a>
-<a href="https://twitter.com/houssamboudiar">
-  Twitter
-</a>
-<a href="https://www.linkedin.com/in/houssam-boudiar/">
-  LinkedIn 
-</a>
+# houssamboudiar.vercel.app
 
-![](https://visitor-badge.glitch.me/badge?page_id=houssamboudiar)
+Personal site of Houssam Boudiar, a full-stack engineer working on AI and LLM applications. It is a
+static site built with [Astro](https://astro.build), with no client-side framework and no tracking.
 
-<br />
+## Develop
 
-hi, i'm [Houssam Boudiar](https://houssamboudiar.vercel.app/), a passionate self-taught developer and a freelance software engineer from Algeria. my passion for software lies with dreaming up ideas and making them come true with elegant interfaces. i take great care in the experience, architecture, and code quality of the things I build.
+```bash
+npm install
+npm run dev       # http://localhost:4321 (TODO markers are visible here only)
+npm run build     # astro check + static build into dist/
+npm run preview   # serve dist/
+npm run og        # regenerate public/og.png
+```
 
-i am also an open-source enthusiast and maintainer. i learned a lot from the open-source community and i love how collaboration and knowledge sharing happened through open-source.
-  
-- 💼 any freelance work? do reach, [email](mailto:houssam.boudiar@univ-constantine2.dz) :)
-- 💬 ask me about anything, i am happy to help;
+## Layout
 
-**languages and tools:**  
+- `src/content/work/*.mdx`: the case studies. Frontmatter is validated by `src/content.config.ts`.
+- `src/diagrams/*.ts`: diagram data drawn by `src/components/Diagram.astro`.
+- `src/styles/global.css`: design tokens for the dark and light themes, plus base styles.
+- `src/site.ts`: name, links and the CV path.
+- `public/Houssam_Boudiar_CV.pdf`: the CV linked from every page.
 
-<code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/javascript/javascript.png"></code>
-<code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/react/react.png"></code>
-<code><img height="20" src="https://raw.githubusercontent.com/github/explore/5c058a388828bb5fde0bcafd4bc867b5bb3f26f3/topics/graphql/graphql.png"></code>
-<code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/nodejs/nodejs.png"></code>
-<code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/python/python.png"></code>
-<code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/mysql/mysql.png"></code>
-<code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/git/git.png"></code>
+## Deploy
 
-<br />
-<br />
-
-<p align="center"> <img src="https://github-readme-stats.vercel.app/api?username=houssamboudiar&show_icons=true&theme=gotham" alt="houssamboudiar" />
-
+Pushing to `main` deploys through the Vercel Git integration. The framework preset is Astro, the
+build command is `npm run build` and the output directory is `dist`.

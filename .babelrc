@@ -1,7 +1,0 @@
-{
-  "presets": ["next/babel"],
-  "plugins": [
-    "react-html-attrs",
-    ["styled-components", { "ssr": true }]
-  ]
-}

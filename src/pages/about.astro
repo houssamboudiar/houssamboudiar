@@ -1,0 +1,107 @@
+---
+import Base from '../layouts/Base.astro';
+import SpecTable from '../components/SpecTable.astro';
+import Todo from '../components/Todo.astro';
+import { site } from '../site';
+---
+
+<Base
+  title="About"
+  description="Background, working approach, languages and education of Houssam Boudiar, a full-stack engineer in Algiers open to relocating to Europe."
+>
+  <div class="wrap section about">
+    <div class="prose">
+      <span class="hud">About</span>
+      <h1>Background</h1>
+      <p>
+        I'm a full-stack engineer based in Algiers. I studied computer science at the University of
+        Constantine 2 and finished an MSc in Software Engineering in 2020.
+      </p>
+      <p>
+        Since March 2022 I've worked at Smartest in Algiers on two products: a well integrity
+        management system for the oil &amp; gas sector, and Mobility One, a ticketing platform for
+        public transport. Both run on-premise, often offline, for customers who care a lot about who
+        can see and change what. In that time I've worked across the whole stack, from the
+        Angular and React frontends to NestJS and FastAPI services, PostgreSQL, Keycloak and the
+        LLM agent layer.
+      </p>
+      <p>
+        I'm open to relocating to Europe for the right full-stack or AI engineering role.
+        <Todo note="add notice period / earliest start date if you want it shown" />
+      </p>
+
+      <h2>How I work</h2>
+      <ul>
+        <li>
+          <strong>Hard rules go in code, not in prompts.</strong> When an LLM can act, I limit what
+          it can reach with permission-scoped tools, enforced limits and approval steps, so
+          a persuasive prompt can't change what it's allowed to do.
+        </li>
+        <li>
+          <strong>Agree on contracts early.</strong> A shared OpenAPI spec, a generated client and
+          shared validation rules let frontend and backend teams move in parallel without guessing.
+        </li>
+        <li>
+          <strong>Test what is expensive to fix later.</strong> On-premise software is hard to
+          patch once it ships, so I write end-to-end tests that include accessibility and
+          right-to-left layout checks.
+        </li>
+        <li>
+          <strong>Failures should be visible.</strong> Alarms that must be acknowledged, audit logs,
+          and model fallbacks that say they are fallbacks. A degraded result should never look
+          like a good one.
+        </li>
+      </ul>
+    </div>
+
+    <div class="facts">
+      <section aria-labelledby="lang-heading">
+        <h2 id="lang-heading" class="hud facts__h">Languages</h2>
+        <SpecTable
+          rows={[
+            ['Arabic', 'Native'],
+            ['English', 'C1 (IELTS)'],
+            ['French', 'B2'],
+            ['German', 'A2'],
+          ]}
+        />
+      </section>
+      <section aria-labelledby="edu-heading">
+        <h2 id="edu-heading" class="hud facts__h">Education</h2>
+        <SpecTable
+          rows={[
+            ['2020', 'MSc Software Engineering, University of Constantine 2 – Abdelhamid Mehri'],
+            ['2018', 'BSc Computer Science, University of Constantine 2 – Abdelhamid Mehri'],
+          ]}
+        />
+      </section>
+      <section aria-labelledby="exp-heading">
+        <h2 id="exp-heading" class="hud facts__h">Experience</h2>
+        <SpecTable rows={[['2022 –', 'Full-Stack Developer, Smartest, Algiers']]} />
+      </section>
+      <p>
+        <a class="btn" href={site.cv}>Full CV <span class="sr-only">(PDF)</span><span aria-hidden="true">↓</span></a>
+      </p>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .about {
+    display: grid;
+    gap: 3rem;
+  }
+  @media (min-width: 64rem) {
+    .about {
+      grid-template-columns: minmax(0, 1fr) 22rem;
+      align-items: start;
+    }
+  }
+  .facts {
+    display: grid;
+    gap: 2rem;
+  }
+  .facts__h {
+    margin: 0 0 0.75rem;
+  }
+</style>

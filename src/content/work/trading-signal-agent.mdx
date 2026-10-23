@@ -1,0 +1,68 @@
+---
+title: AI Trading Signal Agent
+summary: A multi-agent LangGraph system that analyses gold and Nasdaq charts, suggests trades with entry, stop-loss and take-profit levels, and learns from the outcomes of its past signals.
+order: 3
+kind: personal
+sector: Financial markets
+role: Sole developer
+context: Personal project
+stack: [Python, LangGraph, FastAPI, PostgreSQL, pgvector, Ollama, Docker]
+---
+{/* TODO: add `repo:` to the frontmatter once the repository is public. */}
+{/* TODO: add `status:` (e.g. "Running daily on paper signals") — say only what is true. */}
+
+import Figure from '../../components/Figure.astro';
+import Diagram from '../../components/Diagram.astro';
+import { tradingAgent } from '../../diagrams/trading-agent';
+
+## Problem
+
+LLM agents that analyse charts tend to repeat the same mistakes, because each run starts from
+nothing. I wanted a system that keeps a record of how its past signals turned out and uses that
+record in later analyses. I also wanted to measure results on historical data instead of trusting
+the model's own confidence.
+
+## What I built
+
+### Three agents in one graph
+
+The system is a LangGraph graph made of three subgraphs:
+
+- A **data agent** fetches candles across five timeframes.
+- An **analysis agent** first computes market structure from the candles in plain, deterministic
+  code. It then retrieves relevant notes and makes a single LLM call that returns a bias, entry,
+  stop-loss, take-profit and the reasoning behind them.
+- A **decision agent** turns that into a signal, or into no trade.
+
+If the data is missing or the bias is neutral, the graph stops early rather than forcing a trade.
+
+### Memory of past outcomes
+
+I added a loop that reviews how past signals turned out:
+
+- A **backtest engine** replays each signal against the candles that followed. It records the
+  result, the risk-to-reward achieved, the worst drawdown and the likely reasons a setup failed.
+- A **reflection** step groups outcomes by setup pattern and has an LLM write short lessons from
+  them.
+- The lessons are embedded and stored in **pgvector**. Later analyses retrieve the lessons for
+  similar setups before the model makes its call.
+
+### Running it
+
+It runs in Docker with PostgreSQL and uses a local model through Ollama by default. Hosted models
+can be swapped in through configuration. Signals are sent as Telegram alerts. The system suggests
+trades but does not place orders.
+
+<Figure caption="Simplified architecture. Accent outlines mark the LLM steps; the dashed area is the learning loop that feeds lessons back into analysis.">
+  <Diagram spec={tradingAgent} />
+</Figure>
+
+## Outcome
+
+- The pipeline runs end to end: it produces signals, tracks how they turn out and feeds the lessons
+  back into later runs.
+- Every signal gets a result measured against historical data, not just the model's own confidence.
+
+{/* TODO: add backtest results (sample size, period, win rate, average R:R) if you want to state them. Do not estimate. */}
+
+This is a personal research project, not financial advice.

@@ -1,0 +1,85 @@
+---
+import type { DiagramSpec } from '../diagrams/types';
+
+interface Props {
+  spec: DiagramSpec;
+}
+
+const { spec } = Astro.props;
+const { id, title, desc, width, height, zones = [], boxes, edges } = spec;
+const arrow = `${id}-arrow`;
+const arrowHot = `${id}-arrow-hot`;
+---
+
+<svg
+  viewBox={`0 0 ${width} ${height}`}
+  role="img"
+  aria-labelledby={`${id}-title ${id}-desc`}
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <title id={`${id}-title`}>{title}</title>
+  <desc id={`${id}-desc`}>{desc}</desc>
+  <defs>
+    <marker id={arrow} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="d-arrow"></path>
+    </marker>
+    <marker id={arrowHot} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="d-arrow d-arrow--hot"></path>
+    </marker>
+  </defs>
+
+  {
+    zones.map((z) => (
+      <g>
+        <rect x={z.x} y={z.y} width={z.w} height={z.h} class="d-zone" />
+        <text x={z.x + 10} y={z.y + 16} class="d-zone-label">{z.label}</text>
+      </g>
+    ))
+  }
+
+  {
+    edges.map((e) => (
+      <g>
+        <path
+          d={e.d}
+          class={e.hot ? 'd-edge d-edge--hot' : 'd-edge'}
+          stroke-dasharray={e.dashed ? '5 4' : undefined}
+          marker-end={`url(#${e.hot ? arrowHot : arrow})`}
+          marker-start={e.both ? `url(#${e.hot ? arrowHot : arrow})` : undefined}
+        />
+        {(e.labels ?? []).map((l) => (
+          <text x={l.x} y={l.y} class="d-small" text-anchor={l.anchor ?? 'middle'}>
+            {l.text}
+          </text>
+        ))}
+      </g>
+    ))
+  }
+
+  {
+    boxes.map((b) => {
+      const cx = b.x + b.w / 2;
+      const cy = b.y + b.h / 2;
+      return (
+        <g>
+          <rect
+            x={b.x}
+            y={b.y}
+            width={b.w}
+            height={b.h}
+            class={b.hot ? 'd-hot' : 'd-box'}
+            stroke-dasharray={b.dashed ? '5 4' : undefined}
+          />
+          <text x={cx} y={b.sub ? cy - 3 : cy + 4} class="d-label" text-anchor="middle">
+            {b.label}
+          </text>
+          {b.sub && (
+            <text x={cx} y={cy + 14} class="d-small" text-anchor="middle">
+              {b.sub}
+            </text>
+          )}
+        </g>
+      );
+    })
+  }
+</svg>

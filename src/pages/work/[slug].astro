@@ -1,0 +1,198 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import SpecTable from '../../components/SpecTable.astro';
+import Todo from '../../components/Todo.astro';
+
+export async function getStaticPaths() {
+  const work = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
+  return work.map((entry, i) => ({
+    params: { slug: entry.id },
+    props: { entry, index: i, prev: work[i - 1], next: work[i + 1] },
+  }));
+}
+
+interface Props {
+  entry: CollectionEntry<'work'>;
+  index: number;
+  prev?: CollectionEntry<'work'>;
+  next?: CollectionEntry<'work'>;
+}
+
+const { entry, index, prev, next } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+const num = String(index + 1).padStart(2, '0');
+---
+
+<Base title={d.title} description={d.summary} type="article">
+  <article class="wrap case">
+    <header class="case__head">
+      <span class="hud">Case {num} · {d.kind === 'commercial' ? 'Commercial' : 'Personal'}</span>
+      <h1>{d.title}</h1>
+      <p class="case__summary">{d.summary}</p>
+    </header>
+
+    <div class="case__body">
+      <aside class="case__spec" aria-label="Project details">
+        <SpecTable
+          rows={[
+            ['Role', d.role],
+            ['Context', d.context],
+            ['Sector', d.sector],
+            ...(d.status ? [['Status', d.status] as [string, string]] : []),
+            ['Stack', d.stack.join(', ')],
+          ]}
+        >
+          {
+            !d.status && import.meta.env.DEV && (
+              <div class="spec__row">
+                <dt>Status</dt>
+                <dd>
+                  <Todo note="add status to frontmatter" />
+                </dd>
+              </div>
+            )
+          }
+          {
+            d.kind === 'personal' && (
+              <div class="spec__row">
+                <dt>Repo</dt>
+                <dd>
+                  {d.repo ? (
+                    <a href={d.repo}>{d.repo.replace('https://', '')}</a>
+                  ) : (
+                    <>
+                      Not public yet <Todo note="add repo URL to frontmatter" />
+                    </>
+                  )}
+                </dd>
+              </div>
+            )
+          }
+        </SpecTable>
+        {
+          d.kind === 'commercial' && (
+            <p class="case__note">
+              Commercial product. Client names, data and screenshots are confidential, so this page
+              covers the architecture and my role. Diagrams are simplified.
+            </p>
+          )
+        }
+      </aside>
+
+      <div class="prose case__content">
+        <Content />
+      </div>
+    </div>
+
+    <nav class="case__nav" aria-label="More case studies">
+      {
+        prev ? (
+          <a href={`/work/${prev.id}/`} rel="prev">
+            <span class="mono muted">← Previous</span>
+            {prev.data.title}
+          </a>
+        ) : (
+          <a href="/work/">
+            <span class="mono muted">← All work</span>
+            Case studies
+          </a>
+        )
+      }
+      {
+        next ? (
+          <a href={`/work/${next.id}/`} rel="next" class="next">
+            <span class="mono muted">Next →</span>
+            {next.data.title}
+          </a>
+        ) : (
+          <a href="/contact/" class="next">
+            <span class="mono muted">Next →</span>
+            Get in touch
+          </a>
+        )
+      }
+    </nav>
+  </article>
+</Base>
+
+<style>
+  .case {
+    padding-block: clamp(2.5rem, 7vw, 5rem);
+  }
+  .case__head {
+    max-width: 52rem;
+    margin-bottom: 2.5rem;
+  }
+  .case__summary {
+    font-size: clamp(1.15rem, 2.2vw, 1.35rem);
+    line-height: 1.45;
+    color: var(--muted);
+  }
+  .case__body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
+  }
+  @media (min-width: 64rem) {
+    .case__body {
+      grid-template-columns: minmax(0, 1fr) 20rem;
+      align-items: start;
+    }
+    .case__spec {
+      grid-column: 2;
+      grid-row: 1;
+      position: sticky;
+      top: 1.5rem;
+    }
+    .case__content {
+      grid-column: 1;
+      grid-row: 1;
+    }
+  }
+  .case__note {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .case__content :global(h2:first-child) {
+    margin-top: 0;
+  }
+  .case__content :global(h2) {
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .case__nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+  }
+  .case__nav a {
+    display: grid;
+    gap: 0.25rem;
+    padding: 0.5rem 0;
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .case__nav a:hover {
+    color: var(--accent);
+  }
+  .case__nav span {
+    font-size: 0.8rem;
+    font-weight: 400;
+  }
+  .case__nav .next {
+    text-align: right;
+  }
+</style>

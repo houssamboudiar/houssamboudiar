@@ -1,0 +1,69 @@
+---
+title: Well Integrity Management System
+summary: An on-premise platform for oil and gas well integrity, with live SCADA pressure monitoring, rule-based risk checks, an LLM assistant on local models and a rewrite from Angular 11 to React 19.
+order: 1
+kind: commercial
+sector: Oil & gas
+role: Full-stack developer. Led the frontend rewrite.
+context: Smartest, Algiers
+stack: [React 19, NestJS, PostgreSQL, Keycloak, LangGraph, FastAPI, Qwen3, OPC UA, SSE]
+---
+{/* TODO: status — add `status:` to the frontmatter (e.g. "In production at N sites") once you confirm what can be said. */}
+
+import Figure from '../../components/Figure.astro';
+import Diagram from '../../components/Diagram.astro';
+import { wellIntegrity } from '../../diagrams/well-integrity';
+
+## Problem
+
+Well integrity engineers work at remote sites that are often offline. They need three things from
+their software. They need live pressure readings they can act on safely, and a current view of
+which wells are at risk. They also need a quick way to find answers in a large amount of well data.
+
+Before this work, pressure problems were usually found during manual reviews. The existing Angular
+11 application had also become hard to extend, so every new workflow took longer than it should.
+
+## What I built
+
+### Live pressure monitoring
+
+I connected the platform to the site's SCADA system over OPC UA and stream the readings to the
+browser. When a reading crosses a limit, the system raises an alarm that someone has to
+acknowledge. The alarm and the response are both recorded, so every safety decision can be traced
+later during an audit.
+
+### Rule-based risk checks
+
+I wrote checks that scan pressure readings and test history every 15 minutes and feed the results
+into the risk model. Risk ratings and inspection due dates are recalculated when new data arrives,
+so the system no longer waits for the next manual review. These are engineering rules written in
+code, not machine learning.
+
+### LLM assistant on local models
+
+The assistant answers plain-language questions about well data. I built it with LangGraph and
+FastAPI. It can only call read-only tools, and each tool is limited to the data the user asking
+the question is allowed to see. The limit is enforced in the tool layer, not in the prompt.
+
+It runs on a local Qwen3 model, so it works without an internet connection and the data stays on
+site. Azure OpenAI or Anthropic can serve as a fallback.
+
+### Rewrite from Angular 11 to React 19
+
+I led the rewrite of the application in React 19, with a NestJS and PostgreSQL backend and Keycloak
+single sign-on.
+
+<Figure caption="Simplified architecture. Accent outlines mark the LLM parts; the dashed box is the optional cloud fallback outside the site.">
+  <Diagram spec={wellIntegrity} />
+</Figure>
+
+## Outcome
+
+- The rewritten application delivers 12 integrity workflows, GIS maps and 5 interface languages,
+  including Arabic.
+- Risk ratings and inspection due dates update automatically when new data arrives.
+- Every alarm and the response to it can be traced for audit.
+- The assistant works at offline sites and cannot return data beyond the user's role, because the
+  tools enforce the user's permissions.
+
+{/* TODO: add a usage or impact figure if you can share one (users, sites, time saved). Do not estimate. */}
