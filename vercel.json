@@ -3,5 +3,11 @@
   "framework": "astro",
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "trailingSlash": true
+  "trailingSlash": true,
+  "redirects": [
+    { "source": "/aboutme/", "destination": "/about/", "permanent": true },
+    { "source": "/portfolio/", "destination": "/work/", "permanent": true },
+    { "source": "/blog/", "destination": "/", "permanent": true },
+    { "source": "/posts/:id/", "destination": "/", "permanent": true }
+  ]
 }
