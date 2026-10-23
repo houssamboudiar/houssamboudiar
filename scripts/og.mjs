@@ -15,7 +15,7 @@ const svg = `
   ${grid}
   <path d="M80 80H1090L1120 110V550H110L80 520Z" fill="#12161b"/>
   <rect x="80" y="80" width="6" height="440" fill="#f5e94a"/>
-  <text x="140" y="170" font-family="Consolas, 'JetBrains Mono', monospace" font-size="26" letter-spacing="4" fill="#a0a6ad"><tspan fill="#f5e94a">//&#160;</tspan>ALGIERS · OPEN TO EUROPE</text>
+  <text x="140" y="170" font-family="Consolas, 'JetBrains Mono', monospace" font-size="26" letter-spacing="4" fill="#a0a6ad"><tspan fill="#f5e94a">//&#160;</tspan>ALGIERS · OPEN TO RELOCATION</text>
   <text x="140" y="300" font-family="'Segoe UI', 'IBM Plex Sans', Arial, sans-serif" font-size="96" font-weight="600" fill="#e8e6df">Houssam Boudiar</text>
   <text x="140" y="380" font-family="'Segoe UI', 'IBM Plex Sans', Arial, sans-serif" font-size="44" fill="#e8e6df">Full-Stack Engineer, AI &amp; LLM Applications</text>
   <text x="140" y="480" font-family="Consolas, 'JetBrains Mono', monospace" font-size="26" fill="#a0a6ad">TypeScript · React · Angular · NestJS · FastAPI · LangGraph</text>
