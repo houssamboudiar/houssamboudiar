@@ -64,8 +64,9 @@ const num = String(index + 1).padStart(2, '0');
   .card__title a:focus-visible {
     outline: none;
   }
-  /* Inset ring: an outline would be cut off by the panel's clip-path. */
-  .card:has(.card__title a:focus-visible) {
+  /* Inset ring: an outline would be cut off by the panel's clip-path.
+     The heading link is the card's only focusable element. */
+  .card:focus-within {
     box-shadow: inset 0 0 0 3px var(--accent);
   }
   .card:hover .card__title a {
